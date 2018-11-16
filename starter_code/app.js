@@ -36,7 +36,7 @@ app.use(session({
   secret: 'never do your own laundry again',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 600000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60 // 1 day
@@ -77,5 +77,8 @@ app.use('/', index);
 
 const auth = require('./routes/auth');
 app.use('/', auth);
+
+const laundry = require('./routes/laundry');
+app.use('/', laundry);
 
 module.exports = app;
